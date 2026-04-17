@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pod-reader-binding
+roleRef:
+  name: pod-reader
+  kind: Role
+subjects:
+- kind: User
+  name: pod-reader-user
+  namespace: default
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cluster-admin-binding
+roleRef:
+  name: cluster-admin
+  kind: ClusterRole
+subjects:
+- kind: User
+  name: cluster-admin-user
+  namespace: default
