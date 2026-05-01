@@ -1,0 +1,22 @@
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: example-pdb
+spec:
+  selector:
+    matchLabels:
+      app: example
+  minAvailable: 1
+---
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: example-request-authn
+spec:
+  selector:
+    matchLabels:
+      app: example
+  jwtRules:
+  - issuer: "https://example.com"
+    audiences:
+    - "https://example.com"
