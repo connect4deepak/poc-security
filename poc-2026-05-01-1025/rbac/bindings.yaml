@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pod-reader-binding
+roleRef:
+  name: pod-reader
+  kind: Role
+subjects:
+- kind: User
+  name: pod-reader-user
+  namespace: default
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pod-writer-binding
+roleRef:
+  name: pod-writer
+  kind: Role
+subjects:
+- kind: User
+  name: pod-writer-user
+  namespace: default
